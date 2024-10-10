@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assinatura de Email</title>
+    <link rel="preload" href="AptosDisplay.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="https://intranet.grupojng.com.br/wp-content/uploads/2023/09/cropped-ICONE-INTRANET-DESKTOP-32x32.png" sizes="32x32">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+    body {  
+        font-family: 'Aptos Display';
+        background-image: linear-gradient(to right, #003676, #00aae3);
+        background-repeat: no-repeat;
+    }
+
+    .box{
+    display: inline-block;
+    margin: 20px;
+    }
+
+    .box-text{
+        margin: 10px;
+        margin-left: 550px;
+    }
+
+    .box-text a{
+        color: #001d40;
+        font-size: 26px;
+    }
+
+    .box-imagem{
+        margin-left: 400px;
+    }
+
+    navbar {
+        display: flex;
+        align-items: center;
+        background-color: #ffffff;
+    }
+
+
+    @font-face {
+    font-family: 'Aptos Display';
+    src: url('/AptosDisplay.woff2') format('woff2'),
+         url('/AptosDisplay.woff') format('woff');
+    /* Adicione outros formatos de fonte, se aplicável */
+    }
+    h1, h2 {
+        text-align: center;
+        color: #ffffff;
+        margin: 5px;
+    }
+
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 10px;
+    }
+
+    #signatureForm {
+        max-width: 800px;
+        background: #fff;
+        padding: 25px 40px 10px 40px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        height: 400px;
+    }
+
+    #signatureForm .text{
+        text-align: center;
+        font-size: 41px;
+        font-weight: 600;
+        font-family: 'Poppins', sans-serif;
+        background-color: #001d40;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    form {
+        margin: 10px;
+        padding: 20px;
+        display: flex;
+        margin-bottom: 10px;
+        max-width: 600px;
+        background-color: transparent;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin: 10px 0 5px;
+    }
+
+    input[type="text"], input[type="email"], input[type="date"], input[type="tel"] {
+        margin: 10px;
+        width: 100%;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        background-color: transparent;
+        color: #001d40;
+        outline: none;
+    }
+
+    input#celular, input#telefone, input#ramal {
+        display: inline;
+        margin-right: 30px;
+        width: 120px;
+    }
+
+    .button{
+        background-color: #001d40;
+        border-color: transparent;
+        color: white;
+        width: 300px;
+        border-radius: 5px;
+        padding: 5px;
+        margin-left: 20px;
+        margin: 10px;
+    }
+
+    .button:hover{
+        background-color: #0091E4;
+    }
+
+    a {
+    color: white;
+    text-decoration: none; 
+    margin: 0 15px;
+    font-size: 16px;
+    }
+
+    a:hover {
+    color: #0091E4;
+    }
+
+
+  .select2::-ms-expand {
+    display: none;
+  }
+  .select2::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1em;
+    background-color: #34495e;
+    transition: .25s all ease;
+    pointer-events: none;
+  }
+
+
+  .select2{
+    border: 0;
+    box-shadow: none;
+    padding: 0 1em;
+    color: #fff;
+    background-color: transparent;
+    background-image: none;
+    height: 3em;
+    border-radius: .25em;
+    color: black;
+    overflow: hidden;
+  }
+
+    footer {
+        background-color: #000000;
+    }
+
+    .container-footer {
+        display: flex;
+        justify-content: space-between;
+        color: white;
+        padding: 10px;
+    }
+
+</style>
+<body>
+    <header>
+        <navbar>
+            <div class="box">
+                <img src="./logo_JNG_azul.png" width="100px" class="box-imagem">
+            </div>
+        </navbar>
+    </header>
+
+    <div class="container">
+        <div id="signatureForm">
+            <div class="text">
+                Cadastra na assinatura
+            </div>
+            <input type="text" id="nome" name="nome" placeholder="Nome" required>
+            <input type="text" id="cargo" name="cargo" placeholder="Setor/Cargo" required>
+            <img src="https://www.jng.com.br/Assinaturas/icon_whats.png" height="15" width="15">
+            <input type="tel" id="celular" name="celular" placeholder="Celular" required oninput="mascaraCelular(this)">
+            <input type="tel" id="telefone" name="telefone" placeholder="Telefone" value="(11) 2090-0550" readonly>
+            <input type="tel" id="ramal" name="ramal" placeholder="Ramal" required>
+            <input type="image" id="image" src="https://www.jng.com.br/Assinaturas/canvajng.png" alt="Canva JNG" required height="100" width="600">
+            <select name="endereco" id="endereco" class="select2">
+                <option value="Rua Professor Jose Feliciano de Oliveira, 890 Canindé São Paulo/SP">Rua Professor Jose Feliciano de Oliveira, 890 Canindé São Paulo/SP</option>
+                <option value="Estrada Adilia Barbosa Neves, 2111 Cidade Nova Aruja Aruja/SP">Estrada Adilia Barbosa Neves, 2111 Cidade Nova Aruja Aruja/SP</option>
+                <option value="Rodovia BR101, 20955 KM59,8 Galpao 8B Bloco a Corveta Araquari/SC">Rodovia BR101, 20955 KM59,8 Galpao 8B Bloco a Corveta Araquari/SC</option>
+            </select>
+            <button class="button" onclick="generateSignature()">Gerar Assinatura</button>
+            <button class="button" onclick="downloadSignature()">Baixar Assinatura</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container-footer">
+	
+			<p class="credits-left">
+				© 2024 <a href="/home.html">Intranet | JNG</a>
+			</p>
+			
+			<p class="credits-right">
+				<span>Desenvolvido por Tecnologia <a href="http://jng.com.br">JNG</a></span>
+			</p>
+					
+		</div>
+    </footer>
+
+    <script>
+        let currentSignature = ''; // Variável para armazenar a assinatura gerada
+
+        function generateSignature() {
+            const nome = document.getElementById('nome').value;
+            const cargo = document.getElementById('cargo').value;
+            const celular = document.getElementById('celular').value;
+            const telefone = document.getElementById('telefone').value;
+            const ramal = document.getElementById('ramal').value;
+            const endereco = document.getElementById('endereco').value;
+
+            currentSignature = `
+                <meta charset="UTF-8">
+    		    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <div style="font-family: 'Aptos Display';">
+                    <strong style="color: #0091E4; font-size: 16px;">${nome}</strong><br>
+                    <strong style="color: #0091E4; font-size: 13px;">${cargo}</strong><br><br>
+                </div>
+		        <div>
+		        <p style="color: #383838; font-size: 13px; margin: 0px; margin-bottom: 5px;"> <img src="https://www.jng.com.br/Assinaturas/icon_whats.png" height="10" width="10"> &nbsp; ${celular} | (11) 2090-0550 • Ramal: ${ramal}</p>
+                    <img src="https://www.jng.com.br/Assinaturas/logo_base.png" alt="Canva JNG" height="100" width="600">
+                    <p style="color: #383838; font-size: 13px; margin: 0;"> ${endereco}</p><br>
+		        </div>
+            `;
+            alert("Assinatura gerada com sucesso!");
+            console.log(currentSignature); // Mostra no console
+        }
+
+        function downloadSignature() {
+            if (currentSignature) {
+                const blob = new Blob([currentSignature], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'assinatura.html';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                alert("Assinatura baixada com sucesso!");
+            } else {
+                alert("Por favor, gere a assinatura primeiro.");
+            }
+        }
+    </script>
+
+    <script>
+        function mascaraCelular(input) {
+            let valor = input.value.replace(/\D/g, '');
+
+            // Adiciona a máscara
+            if (valor.length > 10) {
+                valor = valor.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3'); // Para celulares com 9 dígitos
+            } else if (valor.length > 5) {
+                valor = valor.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+            } else if (valor.length > 2) {
+                valor = valor.replace(/(\d{2})(\d{0,5})/, '($1) $2');
+            }
+
+            // Atualiza o valor do input
+            input.value = valor;
+        }
+
+            // Adiciona (11) como prefixo
+            document.getElementById('celular').addEventListener('focus', function() {
+            if (!this.value) {
+                this.value = '(11) ';
+            }
+    });
+
+    </script>
+</body>
+</html>
